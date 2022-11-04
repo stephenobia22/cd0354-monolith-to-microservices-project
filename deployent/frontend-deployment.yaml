@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: stephenobia/udagram-frontend:v2
+        image: stephenobia/udagram-frontend:v1
         ports:
         - containerPort: 80
