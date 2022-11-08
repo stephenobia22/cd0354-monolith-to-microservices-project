@@ -5,7 +5,7 @@ metadata:
   labels:
     app: backend-feed
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend-feed
@@ -16,15 +16,23 @@ spec:
     spec:
       containers:
       - name: backend-feed
-        image: stephenobia/udagram-api-feed:v2
+        image: stephenobia/udagram-api-feed:v7
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "261m"
+            memory: "4096Mi"
+            cpu: "500m"
           limits: 
-            memory: "1024Mi"
-            cpu: "512m"
+            memory: "4096Mi"
+            cpu: "1"
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
+        volumeMounts:
+          - name: aws-secret
+            mountPath: "/root/.aws/"
+            readOnly: true
+      volumes: 
+        - name: aws-secret
+          secret:
+            secretName: aws-secret
         
