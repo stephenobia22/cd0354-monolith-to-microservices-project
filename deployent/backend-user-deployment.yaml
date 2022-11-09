@@ -24,6 +24,11 @@ spec:
           - name: aws-secret
             mountPath: "/root/.aws/"
             readOnly: true
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
       volumes: 
         - name: aws-secret
           secret:
